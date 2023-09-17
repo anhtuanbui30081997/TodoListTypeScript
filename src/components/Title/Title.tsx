@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useRef } from 'react'
 import styles from './title.module.scss'
 
 type TitleProps = {
@@ -13,9 +13,15 @@ function equal(prevProp: TitleProps, nextProp: TitleProps) {
 }
 
 function Title(props: TitleProps) {
-  console.log(props)
+  const h1Ref = useRef<HTMLHeadingElement>(null)
+  const clickH1 = () => {
+    console.log(h1Ref)
+    if (h1Ref.current) {
+      h1Ref.current.style.color = 'red'
+    }
+  }
   return (
-    <h1 className={styles.title} onClick={() => props.handleClickTitle(100)}>
+    <h1 className={styles.title} ref={h1Ref} onClick={clickH1}>
       To do list typescript
     </h1>
   )

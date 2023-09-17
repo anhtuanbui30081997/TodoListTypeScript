@@ -6,13 +6,13 @@ function WatchTimer() {
   const intervalRef = useRef<any>(null)
 
   useEffect(() => {
-    console.log('chay mot lan')
+    // console.log('chay mot lan')
     intervalRef.current = setInterval(() => {
       setSeconds((prev) => prev + 1)
-      console.log('setInterval dang chay')
+      // console.log('setInterval dang chay')
     }, 1000)
     return () => {
-      console.log('component unmount!')
+      // console.log('component unmount!')
       clearInterval(intervalRef.current)
     }
   }, [intervalRef])

@@ -1,0 +1,20 @@
+.counter {
+  width: 400px;
+  background-color: rgb(165, 203, 235);
+  margin: 0 auto;
+  border-radius: 5px;
+  padding: 16px;
+  font-size: 1.6rem;
+  .age {
+    margin: 10px 0;
+  }
+  button:hover {
+    cursor: pointer;
+  }
+  button.decreaseBtn {
+    color: red;
+  }
+  button.increaseBtn {
+    color: rgb(44, 230, 44);
+  }
+}
