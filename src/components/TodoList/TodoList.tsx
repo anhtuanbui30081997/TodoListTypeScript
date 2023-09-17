@@ -1,8 +1,16 @@
-import { useEffect, useState } from 'react'
+import { useEffect, useReducer, useState } from 'react'
 import TaskInput from '../TaskInput'
 import TaskList from '../TaskList'
 import { Todo } from '../../@types/todo.type'
 import styles from './todoList.module.scss'
+import {
+  addTodoAction,
+  deleteTodoAction,
+  doneTodoAction,
+  finishEditTodoAction,
+  initialTodoAction
+} from '../../reducer/TodoList/action'
+import reducerTodos, { initialTodos } from '../../reducer/TodoList/reducer'
 
 type HandleNewTodos = (todos: Todo[]) => Todo[]
 
@@ -14,15 +22,17 @@ const syncReactToLocal = (handleNewTodos: HandleNewTodos) => {
 }
 
 function TodoList() {
-  const [todos, setTodos] = useState<Todo[]>([])
+  // const [todos, setTodos] = useState<Todo[]>([])
+  const [todos, dispatch] = useReducer(reducerTodos, initialTodos)
   const [currentTodo, setCurrentTodo] = useState<Todo | null>(null)
   const doneTodos = todos.filter((todo) => todo.done)
   const notDoneTodos = todos.filter((todo) => !todo.done)
 
   useEffect(() => {
-    const todosString = localStorage.getItem('todos')
-    const todosObj: Todo[] = JSON.parse(todosString || '[]')
-    setTodos(todosObj)
+    // const todosString = localStorage.getItem('todos')
+    // const todosObj: Todo[] = JSON.parse(todosString || '[]')
+    // setTodos(todosObj)
+    dispatch(initialTodoAction())
   }, [])
 
   const handleAddTodo = (name: string) => {
@@ -31,7 +41,7 @@ function TodoList() {
       done: false,
       id: new Date().toISOString()
     }
-    setTodos((prev) => [...prev, todo])
+    dispatch(addTodoAction(todo))
     syncReactToLocal((todosObj: Todo[]) => [...todosObj, todo])
   }
 
@@ -44,7 +54,8 @@ function TodoList() {
         return todo
       })
     }
-    setTodos(handle)
+    // setTodos(handle)
+    dispatch(doneTodoAction(handle(todos)))
     syncReactToLocal(handle)
   }
 
@@ -71,7 +82,8 @@ function TodoList() {
         return todo
       })
     }
-    setTodos(handle)
+    // setTodos(handle)
+    dispatch(finishEditTodoAction(handle(todos)))
     setCurrentTodo(null)
     syncReactToLocal(handle)
   }
@@ -89,7 +101,8 @@ function TodoList() {
     if (currentTodo) {
       setCurrentTodo(null)
     }
-    setTodos(handle)
+    // setTodos(handle)
+    dispatch(deleteTodoAction(handle(todos)))
     syncReactToLocal(handle)
   }
 

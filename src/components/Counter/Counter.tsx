@@ -1,7 +1,7 @@
 import { useReducer } from 'react'
 import styles from './counter.module.scss'
-import reducer, { init, initialState, log } from '../../reducer/reducer'
-import { decreaseAgeAction, increaseAgeAction, increaseXAgeAction } from '../../reducer/actions'
+import { init, initialState, log } from '../../reducer/Counter/reducer'
+import { decreaseAgeAction, increaseAgeAction, increaseXAgeAction } from '../../reducer/Counter/actions'
 
 export default function Counter() {
   const [state, dispacth] = useReducer(log(), initialState, init)
