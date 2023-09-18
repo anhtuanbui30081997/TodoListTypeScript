@@ -1,6 +1,7 @@
 import Counter from './components/Counter'
 import TodoList from './components/TodoList'
 import Watch from './components/Watch'
+import Welcome from './components/Welcome'
 
 function App() {
   return (
@@ -8,6 +9,7 @@ function App() {
       <TodoList />
       <Watch />
       <Counter />
+      <Welcome />
     </div>
   )
 }

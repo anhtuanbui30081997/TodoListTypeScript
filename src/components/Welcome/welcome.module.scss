@@ -1,0 +1,48 @@
+.welcome {
+  width: 500px;
+  margin: 20px auto;
+  border-radius: 5px;
+  font-size: 16px;
+  border: 1px solid #000;
+  padding: 16px;
+}
+
+.title {
+  font-weight: 500;
+}
+
+.panel_dark,
+.panel_light {
+  border: 1px solid black;
+  border-radius: 4px;
+  padding: 20px;
+  margin-bottom: 10px;
+}
+
+.panel_light {
+  color: #222;
+  background-color: #fff;
+}
+
+.panel_dark {
+  color: #fff;
+  background: rgb(23, 32, 42);
+}
+
+.button_light,
+.button_dark {
+  border: 1px solid #777;
+  padding: 5px;
+  margin-right: 10px;
+  margin-top: 10px;
+}
+
+.button_dark {
+  color: #222;
+  background-color: #fff;
+}
+
+.button_light {
+  color: #fff;
+  background: rgb(23, 32, 42);
+}
