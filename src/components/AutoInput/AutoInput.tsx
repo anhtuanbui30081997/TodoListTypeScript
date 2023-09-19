@@ -3,7 +3,7 @@ import styles from './autoInput.module.scss'
 
 const Input = forwardRef<{ type: () => void }>((props, ref) => {
   const [value, setValue] = useState<string>('')
-  const initialString = 'Thằng buối chàu học hành đến đâu rồi?'
+  const initialString = 'Thằng buối chàu học hành đến đâu rồi? Hoc hanh tu te vao'
   const inputRef = useRef<HTMLInputElement>(null)
 
   const type = () => {
